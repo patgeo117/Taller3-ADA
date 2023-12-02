@@ -5,7 +5,7 @@ import time
 def generar_arreglo(n):
   A = []
   for i in range(n):
-    A.append(random.randint(0, 100))
+    A.append(random.randint(5, 10000))
   return A
 
 # Función para implementar el algoritmo QuickSort
@@ -85,10 +85,13 @@ def merge(A, i, m, j):
   for k in range(i, j + 1):
     A[k] = B[k - i]
 
-n = 100
+n = 10000
 A = generar_arreglo(n)
+print(A)
 inicio = time.time()
 quicksort(A, 0, n - 1)
+#insertion_sort(A,n)
+#merge_sort(A,n, n - 1)
 fin = time.time()
 tiempo = fin - inicio
 print(f"El tiempo de ejecución para QuickSort con n = {n} fue de {tiempo} segundos")
