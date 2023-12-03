@@ -1,6 +1,5 @@
 import random
 import time
-import numpy as np
 
 
 def stooge_sort(A, i, j):
@@ -14,20 +13,6 @@ def stooge_sort(A, i, j):
         stooge_sort(A, i, j - t)
 
     return A
-
-
-# def generar_arreglo():
-#     # Crear un arreglo de prueba
-#     A = np.array([1,2,3])
-#
-#     # Llamar a stooge_sort con los índices iniciales y finales
-#     result = stooge_sort(A, 0, len(A) - 1)
-#
-#     return result
-#
-#
-# print(generar_arreglo())
-
 
 def generar_arreglo(n):
     return [random.randint(0, 100) for _ in range(n)]
