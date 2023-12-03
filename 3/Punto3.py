@@ -50,23 +50,29 @@ def merge(izquierda, derecha):
     resultado.extend(derecha[j:])
     return resultado
 
-n = 10000
-A = generar_arreglo(n)
+# Tamaños de entrada
+tamanos = [10, 50, 100, 500, 1000, 2000, 5000, 10000]
 
-# Mide el tiempo de ejecución para QuickSort con NumPy
-inicio = time.time()
-quicksort_resultado = quicksort(A.copy())
-tiempo_quicksort = time.time() - inicio
-print("Tiempo de ejecución para QuickSort:", str(tiempo_quicksort), "segundos")
+# Itera sobre los tamaños de entrada
+for n in tamanos:
+    A = generar_arreglo(n)
 
-# Mide el tiempo de ejecución para Insertion-Sort con NumPy
-inicio = time.time()
-insertion_sort_resultado = insertion_sort(A.copy())
-tiempo_insertion_sort = time.time() - inicio
-print("Tiempo de ejecucion para Insertion Sort:", str(tiempo_insertion_sort), "segundos")
+    # Mide el tiempo de ejecución para QuickSort con NumPy
+    inicio = time.time()
+    quicksort_resultado = quicksort(A.copy())
+    tiempo_quicksort = time.time() - inicio
+    print(f"Para n = {n}: Tiempo de ejecución para QuickSort: {tiempo_quicksort} segundos")
 
-# Mide el tiempo de ejecución para Merge-Sort con NumPy
-inicio = time.time()
-merge_sort_resultado = merge_sort(A.copy())
-tiempo_merge_sort = time.time() - inicio
-print("Tiempo de ejecucion para Marge Sort:", str(tiempo_merge_sort), "segundos")
+    # Mide el tiempo de ejecución para Insertion-Sort con NumPy
+    inicio = time.time()
+    insertion_sort_resultado = insertion_sort(A.copy())
+    tiempo_insertion_sort = time.time() - inicio
+    print(f"Para n = {n}: Tiempo de ejecución para Insertion Sort: {tiempo_insertion_sort} segundos")
+
+    # Mide el tiempo de ejecución para Merge-Sort con NumPy
+    inicio = time.time()
+    merge_sort_resultado = merge_sort(A.copy())
+    tiempo_merge_sort = time.time() - inicio
+    print(f"Para n = {n}: Tiempo de ejecución para Merge Sort: {tiempo_merge_sort} segundos")
+
+    print()
