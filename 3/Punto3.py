@@ -1,9 +1,11 @@
 import numpy as np
 import time
 
+
 # Función para generar un arreglo aleatorio de tamaño n con NumPy
 def generar_arreglo(n):
     return np.random.randint(5, 10001, size=n)
+
 
 # Función para implementar el algoritmo QuickSort con NumPy
 def quicksort(A):
@@ -14,6 +16,7 @@ def quicksort(A):
     iguales = A[A == pivote]
     mayores = A[A > pivote]
     return np.concatenate((quicksort(menores), iguales, quicksort(mayores)))
+
 
 # Función para implementar el algoritmo Insertion-Sort con NumPy
 def insertion_sort(A):
@@ -26,6 +29,7 @@ def insertion_sort(A):
         A[j + 1] = clave
     return A
 
+
 # Función para implementar el algoritmo Merge-Sort con NumPy
 def merge_sort(A):
     if len(A) <= 1:
@@ -34,6 +38,7 @@ def merge_sort(A):
     izquierda = merge_sort(A[:m])
     derecha = merge_sort(A[m:])
     return merge(izquierda, derecha)
+
 
 # Función auxiliar para mezclar dos sublistas ordenadas con NumPy
 def merge(izquierda, derecha):
@@ -50,6 +55,7 @@ def merge(izquierda, derecha):
     resultado.extend(derecha[j:])
     return resultado
 
+
 # Tamaños de entrada
 tamanos = [10, 50, 100, 500, 1000, 2000, 5000, 10000]
 
@@ -61,18 +67,18 @@ for n in tamanos:
     inicio = time.time()
     quicksort_resultado = quicksort(A.copy())
     tiempo_quicksort = time.time() - inicio
-    print(f"Para n = {n}: Tiempo de ejecución para QuickSort: {tiempo_quicksort} segundos")
+    print(f"Para n = {n}. El Tiempo de ejecución para QuickSort: {tiempo_quicksort} segundos")
 
     # Mide el tiempo de ejecución para Insertion-Sort con NumPy
     inicio = time.time()
     insertion_sort_resultado = insertion_sort(A.copy())
     tiempo_insertion_sort = time.time() - inicio
-    print(f"Para n = {n}: Tiempo de ejecución para Insertion Sort: {tiempo_insertion_sort} segundos")
+    print(f"Para n = {n}. El Tiempo de ejecución para Insertion Sort: {tiempo_insertion_sort} segundos")
 
     # Mide el tiempo de ejecución para Merge-Sort con NumPy
     inicio = time.time()
     merge_sort_resultado = merge_sort(A.copy())
     tiempo_merge_sort = time.time() - inicio
-    print(f"Para n = {n}: Tiempo de ejecución para Merge Sort: {tiempo_merge_sort} segundos")
+    print(f"Para n = {n}. El Tiempo de ejecución para Merge Sort: {tiempo_merge_sort} segundos")
 
     print()

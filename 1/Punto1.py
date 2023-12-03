@@ -2,6 +2,7 @@ import random
 import time
 
 
+# Implementación del algoritmo Stooge Sort
 def stooge_sort(A, i, j):
     if A[i] > A[j]:
         A[i], A[j] = A[j], A[i]
@@ -14,6 +15,8 @@ def stooge_sort(A, i, j):
 
     return A
 
+
+# Llenar un arreglo aleatorio de tamaño n
 def generar_arreglo(n):
     return [random.randint(0, 100) for _ in range(n)]
 
@@ -26,6 +29,7 @@ def medir_tiempo_ejecucion(algoritmo, A, i, j):
     return fin - inicio
 
 
+# Crear un arreglo de prueba de tamaño n y medir el tiempo de ejecución
 def main():
     for n in [10, 100, 1000, 2000]:
         A = generar_arreglo(n)
