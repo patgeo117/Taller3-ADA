@@ -1,37 +1,55 @@
 import random
 import time
 
+def stooge_sort(arr):
+    # Algoritmo de ordenamiento Stooge Sort
+   if len(arr) <= 1:
+       return arr
 
-def stooge_sort(A, i, j):
-    if A[i] > A[j]:
-        A[i], A[j] = A[j], A[i]
+   if arr[0] > arr[-1]:
+       arr[0], arr[-1] = arr[-1], arr[0]
 
-    if j - i + 1 > 2:
-        t = (j - i + 1) // 3
-        stooge_sort(A, i, j - t)
-        stooge_sort(A, i + t, j)
-        stooge_sort(A, i, j - t)
+   if len(arr) > 2:
+       t = len(arr) // 3
+       arr[:t] = stooge_sort(arr[:t])
+       arr[-t:] = stooge_sort(arr[-t:])
+       arr[:t] = stooge_sort(arr[:t])
 
-    return A
+   return arr
 
-def generar_arreglo(n):
-    return [random.randint(0, 100) for _ in range(n)]
+def test_sort_algorithm(sort_function, array_size, function_name):
+    # Genera un arreglo de numeros aleatorios
+   arr = [random.randint(1, 1000) for _ in range(array_size)]
+
+   try:
+       # Calcula el tiempo de ejecución del algoritmo
+       start_time = time.time()
+       sorted_arr = sort_function(arr)
+       end_time = time.time()
+       elapsed_time = end_time - start_time
+
+       # print del tiempo de ejecución
+       print("Tamaño del arreglo:", array_size)
+       print("Tiempo de ejecución: {:.6f} segundos".format(elapsed_time))
+
+       # print del arreglo original
+       print("Arreglo original:", arr)
+
+       # print del arreglo ordenado
+       print("Arreglo ordenado:", sorted_arr)
+
+       # chequea que el arreglo esté ordenado correctamente
+       assert sorted_arr == sorted(arr), "El arreglo no está ordenado correctamente"
+
+   except Exception as e:
+       # excepción en caso de que el algoritmo tarde demasiado en ejecutarse
+       print(f"Error: {e}")
+       print(f"El tiempo de ejecución para el arreglo de tamaño {array_size} fue demasiado largo.")
 
 
-# Medir el tiempo de ejecución de un algoritmo
-def medir_tiempo_ejecucion(algoritmo, A, i, j):
-    inicio = time.time()
-    algoritmo(A, i, j)
-    fin = time.time()
-    return fin - inicio
 
-
-def main():
-    for n in [10, 100, 1000, 2000]:
-        A = generar_arreglo(n)
-        tiempo = medir_tiempo_ejecucion(stooge_sort, A, 0, len(A) - 1)
-        print(f"El tiempo de ejecución para n = {n} fue de {tiempo} segundos")
-
-
-if __name__ == "__main__":
-    main()
+# Ejemplos de uso
+test_sort_algorithm(sorted, 10, "sorted")
+test_sort_algorithm(sorted, 100, "sorted")
+test_sort_algorithm(sorted, 1000, "sorted")
+test_sort_algorithm(sorted, 10000, "sorted")
