@@ -2,7 +2,7 @@ import random
 import time
 
 def stooge_sort(arr):
-    # Algoritmo de ordenamiento Stooge Sort
+    # Algoritmo de Ordenamiento Stooge Sort
    if len(arr) <= 1:
        return arr
 
