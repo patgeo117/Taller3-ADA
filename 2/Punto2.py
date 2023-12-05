@@ -1,5 +1,6 @@
 # librerias
 import random
+import time
 
 # Implementación de QuickSort con Python
 def quicksort(arr):
@@ -43,22 +44,29 @@ def generar_arreglo(n):
     return [random.randint(0, 100) for _ in range(n)]
 
 
+# Función para medir el tiempo de ejecución
+def medir_tiempo(func, *args):
+    inicio = time.time()
+    func(*args)
+    fin = time.time()
+    return fin - inicio
+
 # Ejemplos de uso
 vector1 = [1, 2, 2, 3, 4]
 vector2 = [1, 2, 2, 3, 3, 5]
 
 # Generar un vector aleatorio de tamaño n y encontrar su moda
 def vector():
-    for n in [10, 100, 1000, 2000]:
+    for n in [10, 100, 1000, 10000]:
         arr = generar_arreglo(n)
+        tiempo = medir_tiempo(encontrar_moda, arr)
         print(f"Vector de tamaño {n} --> {arr}")
         print("La moda es:", encontrar_moda(arr))
+        print(f"Tiempo de ejecución para n={n}: {tiempo} segundos\n")
 
-
+# Ejecutar los ejemplos
 print(f"Vector de tamaño {len(vector1)} --> {vector1}")
 print("La moda es:", encontrar_moda(vector1))
-
 print(f"Vector de tamaño {len(vector2)} --> {vector2}")
-print("La moda es:", encontrar_moda(vector2))
-
+print("La moda es:", encontrar_moda(vector2), "\n")
 vector()
